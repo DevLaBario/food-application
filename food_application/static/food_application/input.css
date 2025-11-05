@@ -1,0 +1,19 @@
+/* Tailwind CSS Base Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles (if needed) */
+@layer components {
+  /* You can add custom component styles here */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+}
+
+@layer utilities {
+  /* Custom utility classes */
+  .text-gradient-ocean {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600;
+  }
+}

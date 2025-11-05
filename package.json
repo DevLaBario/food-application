@@ -1,0 +1,14 @@
+{
+  "name": "foodapp",
+  "version": "1.0.0",
+  "description": "Food Application with Django and Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i ./food_application/static/food_application/input.css -o ./food_application/static/food_application/output.css",
+    "watch:css": "tailwindcss -i ./food_application/static/food_application/input.css -o ./food_application/static/food_application/output.css --watch",
+    "build:css:prod": "tailwindcss -i ./food_application/static/food_application/input.css -o ./food_application/static/food_application/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/typography": "^0.5.10"
+  }
+}

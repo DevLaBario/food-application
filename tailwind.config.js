@@ -1,10 +1,12 @@
 module.exports = {
   content: [
     "./food_application/templates/**/*.html",
-    "./**/*.py",
+    "./food_application/**/*.py",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
