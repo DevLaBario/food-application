@@ -38,3 +38,12 @@ def update_item(request, id):
             return redirect("food_application:index")
     context = {"form": form}
     return render(request, "food_application/recipe_update.html", context)
+
+
+def delete_item(request, id):
+    item = Item.objects.get(id=id)
+    if request.method == "POST":
+        item.delete()
+        return redirect("food_application:index")
+    context = {"item": item}
+    return render(request, "food_application/delete_recipe.html", context)
