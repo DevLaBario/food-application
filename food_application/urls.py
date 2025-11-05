@@ -6,6 +6,7 @@ app_name = "food_application"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("search/", views.search, name="search"),  # New search URL
     path("item/", views.Item, name="item"),
     path("<int:id>/", views.detail, name="detail"),
     path("add/", views.create_item, name="create_item"),
