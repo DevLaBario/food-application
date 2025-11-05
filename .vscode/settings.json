@@ -1,0 +1,19 @@
+{
+    // Treat .html files in this project as django templates
+  "files.associations": {
+    "*.html": "django-html",
+    "*.djhtml": "django-html"
+  },
+
+  "emmet.includeLanguages": {
+    "django-html": "html",
+    "jinja-html": "html",
+    "jinja": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showAbbreviationSuggestions": true,
+  "editor.tabCompletion": "on",
+  "cSpell.words": [
+    "endfor"
+  ]
+}
