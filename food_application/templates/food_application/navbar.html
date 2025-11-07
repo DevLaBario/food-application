@@ -37,11 +37,11 @@
                     Add Recipe
                 </a>
 
-                <!-- Create Weekly Meal Plan Link -->
-                <a href="{% url 'food_application:create_item' %}" 
+                <!-- Meal Planner Link -->
+                <a href="{% url 'food_application:meal_planner' %}" 
                    class="px-4 py-2 rounded-lg text-white font-medium hover:bg-white/20 transition-all duration-200 flex items-center group">
-                    <svg class="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     Meal Planner
                 </a>
@@ -92,6 +92,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                 </svg>
                 Add Recipe
+            </a>
+
+            <!-- Mobile Meal Planner Link -->
+            <a href="{% url 'food_application:meal_planner' %}" 
+               class="block px-4 py-3 rounded-lg text-white font-medium hover:bg-white/20 transition-all duration-200 flex items-center">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                Meal Planner
             </a>
         </div>
     </div>
