@@ -10,7 +10,7 @@ from django.contrib import messages
 def index(request):
     item_list = Item.objects.all()
     context = {"item_list": item_list}
-    return render(request, "food_application/index.html", context)
+    return render(request, "food_application/home/index.html", context)
 
 
 def search(request):
@@ -40,13 +40,13 @@ def search(request):
         results = Item.objects.none()  # Empty queryset if no search term
 
     context = {"results": results, "query": query, "result_count": results.count()}
-    return render(request, "food_application/search_results.html", context)
+    return render(request, "food_application/home/search_results.html", context)
 
 
 def detail(request, id):
     item = Item.objects.get(id=id)
     context = {"item": item}
-    return render(request, "food_application/detail.html", context)
+    return render(request, "food_application/recipes/detail.html", context)
 
 
 def create_item(request):
@@ -58,7 +58,7 @@ def create_item(request):
             return redirect("food_application:index")
 
     context = {"form": form}
-    return render(request, "food_application/item-form.html", context)
+    return render(request, "food_application/recipes/item-form.html", context)
 
 
 def update_item(request, id):
@@ -69,7 +69,7 @@ def update_item(request, id):
             form.save()
             return redirect("food_application:index")
     context = {"form": form}
-    return render(request, "food_application/recipe_update.html", context)
+    return render(request, "food_application/recipes/recipe_update.html", context)
 
 
 def delete_item(request, id):
@@ -78,7 +78,7 @@ def delete_item(request, id):
         item.delete()
         return redirect("food_application:index")
     context = {"item": item}
-    return render(request, "food_application/delete_recipe.html", context)
+    return render(request, "food_application/recipes/delete_recipe.html", context)
 
 
 def meal_planner(request):
@@ -118,7 +118,7 @@ def meal_planner(request):
 
     context = {"weekly_plan": weekly_plan, "total_recipes": len(all_items)}
 
-    return render(request, "food_application/meal_planner.html", context)
+    return render(request, "food_application/meal_planning/meal_planner.html", context)
 
 
 def save_meal_plan(request):
@@ -176,7 +176,9 @@ def saved_meal_plans(request):
     """
     meal_plans = MealPlan.objects.all()
     context = {"meal_plans": meal_plans}
-    return render(request, "food_application/saved_meal_plans.html", context)
+    return render(
+        request, "food_application/meal_planning/saved_meal_plans.html", context
+    )
 
 
 def view_meal_plan(request, plan_id):
@@ -188,7 +190,9 @@ def view_meal_plan(request, plan_id):
     days = meal_plan.days.all()
 
     context = {"meal_plan": meal_plan, "days": days}
-    return render(request, "food_application/view_meal_plan.html", context)
+    return render(
+        request, "food_application/meal_planning/view_meal_plan.html", context
+    )
 
 
 def delete_meal_plan(request, plan_id):
@@ -203,4 +207,6 @@ def delete_meal_plan(request, plan_id):
         return redirect("food_application:saved_meal_plans")
 
     context = {"meal_plan": meal_plan}
-    return render(request, "food_application/delete_meal_plan.html", context)
+    return render(
+        request, "food_application/meal_planning/delete_meal_plan.html", context
+    )
