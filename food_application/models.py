@@ -77,3 +77,30 @@ class MealPlanDay(models.Model):
             "meal_plan",
             "day_of_week",
         ]  # Each day should appear once per meal plan
+
+
+class ShoppingList(models.Model):
+    """
+    Represents a shopping list generated from a meal plan.
+
+    Fields:
+    - meal_plan: The meal plan this shopping list is based on (ForeignKey)
+    - created_at: When the shopping list was created
+    - ingredients: A text field storing the compiled list of ingredients
+    """
+
+    meal_plan = models.OneToOneField(
+        MealPlan,
+        on_delete=models.CASCADE,  # If meal plan is deleted, delete the shopping list
+        related_name="shopping_list",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    ingredients = models.TextField(
+        blank=True, help_text="Compiled list of ingredients from all recipes"
+    )
+
+    def __str__(self):
+        return f"Shopping List for {self.meal_plan.name}"
+
+    class Meta:
+        ordering = ["-created_at"]

@@ -24,6 +24,11 @@ urlpatterns = [
         views.delete_meal_plan,
         name="delete_meal_plan",
     ),  # Delete meal plan
+    path(
+        "meal-planner/shopping-list/<int:plan_id>/",
+        views.shopping_list,
+        name="shopping_list",
+    ),  # Shopping list for a meal plan
     path("item/", views.Item, name="item"),
     path("<int:id>/", views.detail, name="detail"),
     path("add/", views.create_item, name="create_item"),
