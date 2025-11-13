@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from livereload.server import Server
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "users",
+    "users.apps.UsersConfig",
     "food_application",
     "tinymce",
     "widget_tweaks",
@@ -142,3 +141,12 @@ TINYMCE_DEFAULT_CONFIG = {
     "custom_undo_redo_levels": 10,
     "file_picker_types": "file image media",
 }
+
+# Login settings
+LOGIN_REDIRECT_URL = "food_application:index"
+LOGIN_URL = "users:login"
+LOGOUT_REDIRECT_URL = "login"
+
+# Media files (Uploaded by users)
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

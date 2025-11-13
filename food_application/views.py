@@ -9,13 +9,21 @@ from bs4 import BeautifulSoup
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def index(request):
     item_list = Item.objects.all()
     context = {"item_list": item_list}
     return render(request, "food_application/home/index.html", context)
+
+
+class IndexClassView:
+    model = Item
+    template_name = "food_application/home/index.html"
+    context_object_name = "item_list"
 
 
 def search(request):

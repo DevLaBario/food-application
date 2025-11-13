@@ -1,315 +1,315 @@
 {% extends 'food_application/base/base.html' %}
 
 {% block body %}
-<div class="min-h-screen bg-gradient-to-br from-blue-100 via-emerald-50 to-teal-50 py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
+    <div class="min-h-screen bg-gradient-to-br from-blue-100 via-emerald-50 to-teal-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-emerald-600 rounded-full mb-6 shadow-lg">
-                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                </svg>
-            </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-6">
-                Shopping List
-            </h1>
-            <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-                For {{ meal_plan.name }}
-            </p>
-            <p class="text-gray-500 text-sm mb-10">
-                Generated on {{ shopping_list.created_at|date:"F d, Y at g:i A" }}
-            </p>
-            
-            <!-- Action Buttons -->
-            <div class="flex justify-center gap-4 mb-8">
-                <a href="{% url 'food_application:view_meal_plan' meal_plan.id %}" 
-                   class="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-semibold rounded-xl shadow-lg hover:bg-gray-50 transition-all duration-200 border-2 border-green-600">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-emerald-600 rounded-full mb-6 shadow-lg">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                     </svg>
-                    Back to Meal Plan
-                </a>
-                <button onclick="window.print()" 
-                   class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                    </svg>
-                    Print List
-                </button>
-            </div>
-        </div>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-6">
+                    Shopping List
+                </h1>
+                <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+                    For {{ meal_plan.name }}
+                </p>
+                <p class="text-gray-500 text-sm mb-10">
+                    Generated on {{ shopping_list.created_at|date:"F d, Y at g:i A" }}
+                </p>
 
-        {% if recipes_with_ingredients %}
+            <!-- Action Buttons -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <a href="{% url 'food_application:view_meal_plan' meal_plan.id %}"
+                       class="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-semibold rounded-xl shadow-lg hover:bg-gray-50 transition-all duration-200 border-2 border-green-600">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        </svg>
+                        Back to Meal Plan
+                    </a>
+                    <button onclick="window.print()"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                        </svg>
+                        Print List
+                    </button>
+                </div>
+            </div>
+
+            {% if recipes_with_ingredients %}
         <!-- Complete Shopping List - Collapsible Section -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
-            {% if ingredients_with_counts %}
-            <div class="mb-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900 flex items-center">
+                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                    {% if ingredients_with_counts %}
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h2 class="text-3xl font-bold text-gray-900 flex items-center">
+                                        <svg class="w-8 h-8 mr-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                        </svg>
+                                        Complete Shopping List
+                                    </h2>
+                                    <p class="text-sm text-gray-500 mt-2 ml-11">Check items you already have at home to remove them from the list</p>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button onclick="updateShoppingList()" id="updateBtn" class="hidden flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg whitespace-nowrap">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                        </svg>
+                                        <span>Update List</span>
+                                    </button>
+                                    <button onclick="toggleShoppingList()" id="toggleBtn" class="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg whitespace-nowrap min-w-[140px]">
+                                        <span id="toggleText">Show All</span>
+                                        <svg id="toggleIcon" class="w-5 h-5 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <span>Total Items:</span>
+                                <span id="totalItems" class="font-bold text-green-600 text-xl">{{ ingredients_with_counts|length }}</span>
+                                <span id="checkedCount" class="hidden ml-4 text-gray-500">(<span id="checkedNum">0</span> to remove)</span>
+                            </div>
+                        </div>
+
+                        <div id="shoppingListContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 overflow-hidden transition-all duration-300" style="max-height: 180px;">
+                            {% for ingredient, count in ingredients_with_counts %}
+                                <div class="ingredient-item flex items-start bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors duration-150">
+                                    <input type="checkbox" class="ingredient-checkbox mt-1 mr-3 w-5 h-5 text-green-600 rounded focus:ring-green-500 cursor-pointer flex-shrink-0" data-ingredient="{{ ingredient }}" onchange="handleCheckboxChange()">
+                                    <label class="ingredient-label text-gray-700 cursor-pointer flex-1 text-sm transition-all duration-200">
+                                        {{ ingredient }}
+                                        {% if count > 1 %}
+                                            <span class="inline-flex items-center px-2 py-0.5 ml-2 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                                {{ count }} recipes
+                                            </span>
+                                        {% endif %}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <h2 class="text-3xl font-bold text-gray-900 flex items-center mb-6">
                             <svg class="w-8 h-8 mr-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                             </svg>
                             Complete Shopping List
                         </h2>
-                        <p class="text-sm text-gray-500 mt-2 ml-11">Check items you already have at home to remove them from the list</p>
-                    </div>
-                    <div class="flex gap-3">
-                        <button onclick="updateShoppingList()" id="updateBtn" class="hidden flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg whitespace-nowrap">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                            </svg>
-                            <span>Update List</span>
-                        </button>
-                        <button onclick="toggleShoppingList()" id="toggleBtn" class="flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg whitespace-nowrap min-w-[140px]">
-                            <span id="toggleText">Show All</span>
-                            <svg id="toggleIcon" class="w-5 h-5 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-                    </div>
+                        <p class="text-gray-500 text-center py-8">No ingredients found</p>
+                    {% endif %}
                 </div>
-                <div class="flex items-center gap-2 text-sm text-gray-600">
-                    <span>Total Items:</span>
-                    <span id="totalItems" class="font-bold text-green-600 text-xl">{{ ingredients_with_counts|length }}</span>
-                    <span id="checkedCount" class="hidden ml-4 text-gray-500">(<span id="checkedNum">0</span> to remove)</span>
-                </div>
-            </div>
-            
-            <div id="shoppingListContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 overflow-hidden transition-all duration-300" style="max-height: 180px;">
-                {% for ingredient, count in ingredients_with_counts %}
-                <div class="ingredient-item flex items-start bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors duration-150">
-                    <input type="checkbox" class="ingredient-checkbox mt-1 mr-3 w-5 h-5 text-green-600 rounded focus:ring-green-500 cursor-pointer flex-shrink-0" data-ingredient="{{ ingredient }}" onchange="handleCheckboxChange()">
-                    <label class="ingredient-label text-gray-700 cursor-pointer flex-1 text-sm transition-all duration-200">
-                        {{ ingredient }}
-                        {% if count > 1 %}
-                        <span class="inline-flex items-center px-2 py-0.5 ml-2 text-xs font-medium bg-green-100 text-green-800 rounded-full">
-                            {{ count }} recipes
-                        </span>
-                        {% endif %}
-                    </label>
-                </div>
-                {% endfor %}
-            </div>
-            {% else %}
-            <h2 class="text-3xl font-bold text-gray-900 flex items-center mb-6">
-                <svg class="w-8 h-8 mr-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                </svg>
-                Complete Shopping List
-            </h2>
-            <p class="text-gray-500 text-center py-8">No ingredients found</p>
-            {% endif %}
-        </div>
 
         <!-- Ingredients by Day - Grid Layout -->
-        <div class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg class="w-8 h-8 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                Ingredients by Day
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {% regroup recipes_with_ingredients by day as day_groups %}
-                {% for day_group in day_groups %}
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        Ingredients by Day
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {% regroup recipes_with_ingredients by day as day_groups %}
+                        {% for day_group in day_groups %}
                 <!-- Day Card -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                     <!-- Day Header -->
-                    <div class="bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-6">
-                        <h3 class="text-3xl font-bold text-white flex items-center">
-                            <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                            </svg>
-                            {{ day_group.grouper }}
-                        </h3>
-                    </div>
-                    
+                                <div class="bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-6">
+                                    <h3 class="text-3xl font-bold text-white flex items-center">
+                                        <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                        {{ day_group.grouper }}
+                                    </h3>
+                                </div>
+
                     <!-- Recipes for this Day -->
-                    <div class="p-8 space-y-6">
-                        {% for recipe_data in day_group.list %}
-                        <div class="border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-white rounded-r-xl p-6 shadow-md">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                </svg>
-                                {{ recipe_data.recipe_name }}
-                            </h4>
-                            <ul class="space-y-2">
-                                {% for ingredient in recipe_data.ingredients %}
-                                <li class="flex items-start text-gray-700">
-                                    <svg class="w-5 h-5 mr-3 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span>{{ ingredient }}</span>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                                <div class="p-8 space-y-6">
+                                    {% for recipe_data in day_group.list %}
+                                        <div class="border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-white rounded-r-xl p-6 shadow-md">
+                                            <h4 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                                <svg class="w-5 h-5 mr-2 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                                </svg>
+                                                {{ recipe_data.recipe_name }}
+                                            </h4>
+                                            <ul class="space-y-2">
+                                                {% for ingredient in recipe_data.ingredients %}
+                                                    <li class="flex items-start text-gray-700">
+                                                        <svg class="w-5 h-5 mr-3 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                                        </svg>
+                                                        <span>{{ ingredient }}</span>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </div>
-        {% else %}
+            {% else %}
         <!-- Empty State -->
-        <div class="bg-white rounded-2xl shadow-xl p-16 text-center">
-            <svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            <h3 class="text-2xl font-bold text-gray-700 mb-3">No Ingredients Found</h3>
-            <p class="text-gray-500 mb-8">
-                The recipes in this meal plan don't have ingredient lists yet.<br>
-                Please add ingredients to your recipes to generate a shopping list.
-            </p>
-            <a href="{% url 'food_application:view_meal_plan' meal_plan.id %}" 
-               class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-                Back to Meal Plan
-            </a>
+                <div class="bg-white rounded-2xl shadow-xl p-16 text-center">
+                    <svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <h3 class="text-2xl font-bold text-gray-700 mb-3">No Ingredients Found</h3>
+                    <p class="text-gray-500 mb-8">
+                        The recipes in this meal plan don't have ingredient lists yet.<br>
+                        Please add ingredients to your recipes to generate a shopping list.
+                    </p>
+                    <a href="{% url 'food_application:view_meal_plan' meal_plan.id %}"
+                       class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-200">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        </svg>
+                        Back to Meal Plan
+                    </a>
+                </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
-</div>
 
 <!-- Print Styles -->
-<style>
-    @media print {
-        .no-print {
-            display: none !important;
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+            }
+            .bg-gradient-to-br,
+            .bg-gradient-to-r {
+                background: white !important;
+            }
+            .shadow-xl,
+            .shadow-lg,
+            .shadow-md {
+                box-shadow: none !important;
+            }
         }
-        body {
-            background: white !important;
-        }
-        .bg-gradient-to-br,
-        .bg-gradient-to-r {
-            background: white !important;
-        }
-        .shadow-xl,
-        .shadow-lg,
-        .shadow-md {
-            box-shadow: none !important;
-        }
-    }
-</style>
+    </style>
 
 <!-- Toggle Script -->
-<script>
-    let isExpanded = false;
-    
-    function toggleShoppingList() {
-        const container = document.getElementById('shoppingListContainer');
-        const toggleText = document.getElementById('toggleText');
-        const toggleIcon = document.getElementById('toggleIcon');
-        
-        isExpanded = !isExpanded;
-        
-        if (isExpanded) {
-            container.style.maxHeight = 'none';
-            toggleText.textContent = 'Show Less';
-            toggleIcon.style.transform = 'rotate(180deg)';
-        } else {
-            container.style.maxHeight = '180px';
-            toggleText.textContent = 'Show All';
-            toggleIcon.style.transform = 'rotate(0deg)';
-        }
-    }
-    
-    function handleCheckboxChange() {
-        const checkboxes = document.querySelectorAll('.ingredient-checkbox');
-        const updateBtn = document.getElementById('updateBtn');
-        const checkedCount = document.getElementById('checkedCount');
-        const checkedNum = document.getElementById('checkedNum');
-        let checkedItems = 0;
-        
-        checkboxes.forEach(checkbox => {
-            const label = checkbox.nextElementSibling;
-            if (checkbox.checked) {
-                checkedItems++;
-                // Add strikethrough and fade effect
-                label.style.textDecoration = 'line-through';
-                label.style.opacity = '0.5';
+    <script>
+        let isExpanded = false;
+
+        function toggleShoppingList() {
+            const container = document.getElementById('shoppingListContainer');
+            const toggleText = document.getElementById('toggleText');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            isExpanded = !isExpanded;
+
+            if (isExpanded) {
+                container.style.maxHeight = 'none';
+                toggleText.textContent = 'Show Less';
+                toggleIcon.style.transform = 'rotate(180deg)';
             } else {
-                // Remove strikethrough and fade effect
-                label.style.textDecoration = 'none';
-                label.style.opacity = '1';
+                container.style.maxHeight = '180px';
+                toggleText.textContent = 'Show All';
+                toggleIcon.style.transform = 'rotate(0deg)';
             }
-        });
-        
-        // Show/hide update button and checked count
-        if (checkedItems > 0) {
-            updateBtn.classList.remove('hidden');
-            updateBtn.classList.add('flex');
-            checkedCount.classList.remove('hidden');
-            checkedNum.textContent = checkedItems;
-        } else {
-            updateBtn.classList.add('hidden');
-            updateBtn.classList.remove('flex');
-            checkedCount.classList.add('hidden');
         }
-    }
-    
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+
+        function handleCheckboxChange() {
+            const checkboxes = document.querySelectorAll('.ingredient-checkbox');
+            const updateBtn = document.getElementById('updateBtn');
+            const checkedCount = document.getElementById('checkedCount');
+            const checkedNum = document.getElementById('checkedNum');
+            let checkedItems = 0;
+
+            checkboxes.forEach(checkbox => {
+                const label = checkbox.nextElementSibling;
+                if (checkbox.checked) {
+                    checkedItems++;
+                // Add strikethrough and fade effect
+                    label.style.textDecoration = 'line-through';
+                    label.style.opacity = '0.5';
+                } else {
+                // Remove strikethrough and fade effect
+                    label.style.textDecoration = 'none';
+                    label.style.opacity = '1';
+                }
+            });
+
+        // Show/hide update button and checked count
+            if (checkedItems > 0) {
+                updateBtn.classList.remove('hidden');
+                updateBtn.classList.add('flex');
+                checkedCount.classList.remove('hidden');
+                checkedNum.textContent = checkedItems;
+            } else {
+                updateBtn.classList.add('hidden');
+                updateBtn.classList.remove('flex');
+                checkedCount.classList.add('hidden');
+            }
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
                 }
             }
+            return cookieValue;
         }
-        return cookieValue;
-    }
-    
-    function updateShoppingList() {
-        const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
-        const ingredientsToRemove = Array.from(checkboxes).map(cb => cb.dataset.ingredient);
-        
-        if (ingredientsToRemove.length === 0) {
-            return;
-        }
-        
-        // Show loading state
-        const updateBtn = document.getElementById('updateBtn');
-        const originalText = updateBtn.innerHTML;
-        updateBtn.disabled = true;
-        updateBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="ml-2">Updating...</span>';
-        
-        // Send AJAX request to update the list
-        fetch(window.location.href, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify({
-                remove_ingredients: ingredientsToRemove
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Reload the page to show updated list
-                window.location.reload();
-            } else {
-                alert('Error updating shopping list: ' + (data.error || 'Unknown error'));
-                updateBtn.disabled = false;
-                updateBtn.innerHTML = originalText;
+
+        function updateShoppingList() {
+            const checkboxes = document.querySelectorAll('.ingredient-checkbox:checked');
+            const ingredientsToRemove = Array.from(checkboxes).map(cb => cb.dataset.ingredient);
+
+            if (ingredientsToRemove.length === 0) {
+                return;
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error updating shopping list. Please try again.');
-            updateBtn.disabled = false;
-            updateBtn.innerHTML = originalText;
-        });
-    }
-</script>
+
+        // Show loading state
+            const updateBtn = document.getElementById('updateBtn');
+            const originalText = updateBtn.innerHTML;
+            updateBtn.disabled = true;
+            updateBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="ml-2">Updating...</span>';
+
+        // Send AJAX request to update the list
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    remove_ingredients: ingredientsToRemove
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                // Reload the page to show updated list
+                        window.location.reload();
+                    } else {
+                        alert('Error updating shopping list: ' + (data.error || 'Unknown error'));
+                        updateBtn.disabled = false;
+                        updateBtn.innerHTML = originalText;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error updating shopping list. Please try again.');
+                    updateBtn.disabled = false;
+                    updateBtn.innerHTML = originalText;
+                });
+        }
+    </script>
 {% endblock %}
