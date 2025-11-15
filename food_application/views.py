@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.db.models import Q  # Import Q for complex queries
 from .models import Item, MealPlan, MealPlanDay, ShoppingList
 from .forms import ItemForm
@@ -7,25 +7,58 @@ from django.contrib import messages
 import re
 from bs4 import BeautifulSoup
 import json
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+from django.urls import reverse_lazy
 
 
 # Create your views here.
-@login_required
-def index(request):
-    item_list = Item.objects.all()
-    context = {"item_list": item_list}
-    return render(request, "food_application/home/index.html", context)
 
 
-class IndexClassView:
+class IndexClassView(LoginRequiredMixin, ListView):
     model = Item
     template_name = "food_application/home/index.html"
     context_object_name = "item_list"
+    login_url = "/users/login/"
 
 
+class RecipeDetailView(DetailView):
+    model = Item
+    template_name = "food_application/recipes/detail.html"
+    context_object_name = "item"
+    pk_url_kwarg = "id"
+
+
+class RecipeCreateView(CreateView):
+    model = Item
+    form_class = ItemForm
+    template_name = "food_application/recipes/item-form.html"
+    success_url = reverse_lazy("food_application:index")
+
+
+class RecipeUpdateView(UpdateView):
+    model = Item
+    form_class = ItemForm
+    template_name = "food_application/recipes/recipe_update.html"
+    success_url = reverse_lazy("food_application:index")
+    pk_url_kwarg = "id"
+
+
+class RecipeDeleteView(DeleteView):
+    model = Item
+    template_name = "food_application/recipes/delete_recipe.html"
+    success_url = reverse_lazy("food_application:index")
+    pk_url_kwarg = "id"
+
+
+# Custom Functions Below
 def search(request):
     """
     Search view that handles recipe searches.
@@ -54,44 +87,6 @@ def search(request):
 
     context = {"results": results, "query": query, "result_count": results.count()}
     return render(request, "food_application/home/search_results.html", context)
-
-
-def detail(request, id):
-    item = Item.objects.get(id=id)
-    context = {"item": item}
-    return render(request, "food_application/recipes/detail.html", context)
-
-
-def create_item(request):
-    form = ItemForm(request.POST or None)
-    if request.method == "POST":
-
-        if form.is_valid():
-            form.save()
-            return redirect("food_application:index")
-
-    context = {"form": form}
-    return render(request, "food_application/recipes/item-form.html", context)
-
-
-def update_item(request, id):
-    item = Item.objects.get(id=id)
-    form = ItemForm(request.POST or None, instance=item)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            return redirect("food_application:index")
-    context = {"form": form}
-    return render(request, "food_application/recipes/recipe_update.html", context)
-
-
-def delete_item(request, id):
-    item = Item.objects.get(id=id)
-    if request.method == "POST":
-        item.delete()
-        return redirect("food_application:index")
-    context = {"item": item}
-    return render(request, "food_application/recipes/delete_recipe.html", context)
 
 
 def meal_planner(request):

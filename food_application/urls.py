@@ -5,7 +5,7 @@ from . import views
 app_name = "food_application"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.IndexClassView.as_view(), name="index"),  # Home page URL
     path("search/", views.search, name="search"),  # New search URL
     path(
         "meal-planner/", views.meal_planner, name="meal_planner"
@@ -30,8 +30,16 @@ urlpatterns = [
         name="shopping_list",
     ),  # Shopping list for a meal plan
     path("item/", views.Item, name="item"),
-    path("<int:id>/", views.detail, name="detail"),
-    path("add/", views.create_item, name="create_item"),
-    path("update/<int:id>/", views.update_item, name="update_item"),
-    path("delete/<int:id>/", views.delete_item, name="delete_item"),
+    path(
+        "<int:id>/", views.RecipeDetailView.as_view(), name="detail"
+    ),  # Detail view for a recipe
+    path(
+        "add/", views.RecipeCreateView.as_view(), name="create_item"
+    ),  # Create new recipe
+    path(
+        "update/<int:id>/", views.RecipeUpdateView.as_view(), name="update_item"
+    ),  # Update existing recipe
+    path(
+        "delete/<int:id>/", views.RecipeDeleteView.as_view(), name="delete_item"
+    ),  # Delete existing recipe
 ]
