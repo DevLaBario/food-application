@@ -1,1 +1,43 @@
-<h2>You have successfully logged out.</h2>
+{% load static %}
+<link rel="stylesheet" href="{% static 'food_application/output.css' %}">
+
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full bg-white p-10 rounded-xl shadow-lg">
+        <!-- Success Icon -->
+        <div class="flex justify-center mb-6">
+            <div class="flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-br from-blue-100 to-teal-100">
+                <svg class="h-10 w-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="text-center space-y-4 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">Successfully Logged Out</h2>
+            <p class="text-gray-600">
+                You have been safely logged out of your account.
+            </p>
+        </div>
+
+        <!-- Decorative line -->
+        <div class="flex justify-center mb-8">
+            <div class="h-1 w-32 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 rounded-full"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="space-y-3">
+            <a href="{% url 'users:login' %}" 
+               class="block w-full py-3 px-4 text-center border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                Sign In
+            </a>
+        </div>
+
+        <!-- Footer Message -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-gray-500">
+                See you again soon!
+            </p>
+        </div>
+    </div>
+</div>
